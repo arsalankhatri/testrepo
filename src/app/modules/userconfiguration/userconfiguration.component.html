@@ -1,0 +1,61 @@
+<!-- <button type="button" nglButton="neutral" (click)="hideName = !hideName" class="slds-m-bottom--large">Toggle "Name" column</button>
+<button type="button" nglButton="neutral" (click)="loading = !loading" class="slds-m-bottom--large">Toggle Loading</button>
+<button type="button" nglButton="neutral" (click)="toggleData()" class="slds-m-bottom--large">Clear/Set data</button> -->
+
+<div class="slds-table--bordered slds-grid " style="padding: 0.25rem;">
+  <p class="slds-form-element__label slds-m-bottom--none slds-m-left--small slds-size--3-of-4" style=" line-height: 32px;">Total Records: <span>{{data.length}}</span></p>
+  <div class="slds-form-element__control slds-size--1-of-4">
+    <div class="slds-input-has-icon slds-grow slds-input-has-icon--left">
+      <fa  class="slds-input__icon slds-icon-text-default" name="search"></fa>
+      <input class="slds-input slds-lookup__search-input " [(ngModel)]="searchtxt" (ngModelChange)="textchange($event)"  type="text" placeholder="Search">
+    </div>
+  </div>
+</div>
+<table ngl-datatable [data]="data" trackByKey="name" [loading]="loading" [(sort)]="sort" (sortChange)="onSort($event)"
+  (onRowClick)="onRowClick($event)" class="slds-max-medium-table--stacked-horizontal">
+  <ngl-datatable-column heading="Action" key="action">
+      <ng-template nglDatatableCell let-row="row"><a class="slds-p-around--small" >Edit</a>|<a class="slds-p-around--small" >Delete</a>|<a class="slds-p-around--small">Clone</a></ng-template>
+  </ngl-datatable-column>
+  <ngl-datatable-column heading="SALESFORCE USER" key="name" *ngIf="!hideName" cellClass="slds-truncate" sortable></ngl-datatable-column>
+  <ngl-datatable-column heading="ACCOUNT NUMBER" key="surname" cellClass="slds-truncate" sortable>
+    <ng-template nglDatatableCell let-row="row"><b>{{row.surname}}</b></ng-template>
+  </ngl-datatable-column>
+  <ngl-datatable-column heading="ACTIVE CLOUDCALL CRM PROFILE" key="profile" cellClass="slds-truncate" sortable>
+      <ng-template nglDatatableCell let-row="row"><b>{{row.surname}} </b><a>[Change]</a></ng-template>
+    </ngl-datatable-column>
+    <ngl-datatable-column heading="OAUTH TOKEN EXPIRES ON" key="profile" cellClass="slds-truncate" sortable>
+        <ng-template nglDatatableCell let-row="row"><b>{{row.surname}}</b></ng-template>
+      </ngl-datatable-column>
+  <!-- <ngl-datatable-column heading="Points" key="points">
+    <ng-template nglDatatableHeading><strong>Points</strong></ng-template>
+    <ng-template nglDatatableCell let-value><ngl-badge>{{value | number}}</ngl-badge></ng-template>
+  </ngl-datatable-column> -->
+  
+  <!-- Loading overlay -->
+  <ng-template nglLoadingOverlay>
+    <div class="slds-box slds-box--small slds-theme--shade slds-text-align--center">Loading...</div>
+  </ng-template>
+
+  <!-- No rows overlay -->
+  <ng-template nglNoRowsOverlay>No data available in table!</ng-template>
+</table>
+<div class="slds-table--bordered">
+  <p class="slds-form-element__label slds-m-bottom--none slds-m-left--small">Total Records: <span>{{data.length}}</span></p>
+</div>
+<div class="slds-table--bordered">
+  <p class="slds-form-element__label slds-m-bottom--none slds-m-left--small">
+    Chatter Feed 
+  </p>
+  <p class="slds-form-element__label slds-m-bottom--none slds-m-left--small">
+      <fa name="phone"></fa>
+      CloudCall :  <span>  Offline</span>
+    </p>
+
+</div>
+<!-- 
+
+<div>
+  <a *ngFor="let d of hdata">Hello</a>
+</div>
+
+<button (click)="setData()">Click me</button> -->

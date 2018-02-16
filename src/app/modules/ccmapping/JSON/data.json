@@ -1,0 +1,70 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "object": "Kareem",
+      "phone1": "Office",
+      "priority1": 1,
+      "phone2": "Desk",
+      "priority2": 3,
+      "phone3": "Fax",
+      "priority3": 2
+    },
+    {
+      "id": 2,
+      "object": "Karl",
+      "phone1": "Desk",
+      "priority1": 3,
+      "phone2": "Office",
+      "priority2": 1,
+      "phone3": "Fax",
+      "priority3": 2
+    },
+    {
+      "id": 4,
+      "object": "Michael",
+      "phone1": "Fax",
+      "phone2": "Home",
+      "phone3": "Desk",
+      "priority3": 1
+    },
+    {
+      "id": 5,
+      "object": "Wilt",
+      "phone1": "Home",
+      "phone2": "Fax",
+      "priority1": 1,
+      "priority2": 3,
+      "phone3": "Office",
+      "priority3": 2
+    },
+    {
+      "id": 8,
+      "object": "Option Two",
+      "phone1": "Office",
+      "priority1": 1,
+      "phone2": "Home",
+      "priority2": 2,
+      "phone3": "Fax",
+      "priority3": 3
+    }
+  ],
+  "phoneField": [
+    {
+      "id": 1,
+      "value": "Home"
+    },
+    {
+      "id": 2,
+      "value": "Office"
+    },
+    {
+      "id": 3,
+      "value": "Desk"
+    },
+    {
+      "id": 4,
+      "value": "Fax"
+    }
+  ]
+}

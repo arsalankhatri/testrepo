@@ -1,0 +1,61 @@
+<div class="slds-notify_container">
+  <ngl-notification *ngIf="showAlert" type="alert" severity="error" (nglNotificationClose)="onClose($event)" timeout="5000" class="slds-theme--alert-texture">
+    <h2>{{errorMessage}}</h2>
+  </ngl-notification>
+</div>
+<label class="slds-grid">
+  <span class="slds-form-element__label slds-m-bottom--none slds-m-top--x-small">Select Object for Phone Mapping</span>
+  <select name="object" [(ngModel)]="mapdata.object" *ngIf="mapdata.id==0" class="slds-select  slds-size--1-of-4 ">
+      <option>Option One</option>
+      <option>Option Two</option>
+      <option>Option Three</option>
+    </select>
+    <ngl-badge *ngIf="mapdata.id>0" class="slds-m-bottom--none slds-m-top--x-small"  type="info"> {{mapdata.object}}</ngl-badge>
+  </label>
+
+
+<div class="slds-table--bordered slds-grid slds-m-top--small  " style="padding: 0.25rem; background-color: #f4f6f9;">
+  <h2 class="slds-text-heading--label-normal  slds-m-around--small ">PHONE MAPPING</h2> 
+  </div>
+<table class="slds-table slds-table--bordered">
+
+<thead>
+  <tr class="slds-text-title--caps">
+    <th class="slds-size--1-of-4" style="text-align: left;">CLOUDCALL PHONE FIELD</th>
+    <th class="slds-size--1-of-4" style="text-align: left;">SALESFORCE PHONE FIELD</th>
+    <th class="slds-size--1-of-4" style="text-align: left;" >PRIORITY</th>
+    <th class="slds-size--1-of-4" style="text-align: left;"></th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td><abbr class="slds-required" title="required">*</abbr>Phone Field 1</td>
+    <td><select name="phone1" [(ngModel)]="mapdata.phone1" class="slds-select  slds-size--3-of-4 " required>
+        <option  *ngFor="let field of fielddata" [ngValue]="field.value" >{{field.value}}</option>
+        </select></td>
+    <td><input  name="priority1" [(ngModel)]="mapdata.priority1"  nglFormControl class="slds-size--1-of-4" min=1 max="3" type="number"></td>
+      <td></td>
+  </tr>
+  <tr>
+      <td>Phone Field 2</td>
+      <td><select  name="phone2"  [(ngModel)]="mapdata.phone2" class="slds-select  slds-size--3-of-4 ">
+        <option  *ngFor="let field of fielddata" [ngValue]="field.value" >{{field.value}}</option>
+        </select></td>
+      <td><input name="priority2" [(ngModel)]="mapdata.priority2"  nglFormControl class="slds-size--1-of-4" min=1 max="3"   type="number"></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Phone Field 3</td>
+        <td><select  name="phone3"  [(ngModel)]="mapdata.phone3" class="slds-select  slds-size--3-of-4 ">
+          <option  *ngFor="let field of fielddata" [ngValue]="field.value" >{{field.value}}</option>
+          </select></td>
+        <td><input name="priority3" [(ngModel)]="mapdata.priority3"  nglFormControl class="slds-size--1-of-4" min=1 max="3"   type="number"></td>
+          <td></td>
+      </tr>
+</tbody>
+  </table>
+
+  <div class="slds-grid  slds-m-top--small slds-grid--align-end">
+    <button type="button" nglButton="brand" (click)="save(mapdata)" >Save</button>
+    <button type="button" nglButton="neutral" [routerLink]="['/ccmaplist']">Cancel</button>
+  </div>

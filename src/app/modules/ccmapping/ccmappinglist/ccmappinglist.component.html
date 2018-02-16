@@ -1,0 +1,38 @@
+<div class="slds-grid  slds-m-bottom--small slds-grid--align-end">
+  <button [routerLink]="['/ccmap']"  type="button" nglButton="brand">Map New Object</button>
+</div>
+<div class="slds-table--bordered slds-grid " style="padding: 0.25rem;">
+  <p class="slds-form-element__label slds-m-bottom--none slds-m-left--small slds-size--3-of-4" style=" line-height: 32px;">Total Records: <span>{{data.length}}</span></p>
+</div>
+<table ngl-datatable [data]="data" trackByKey="object" [loading]="loading" 
+ class="slds-max-medium-table--stacked-horizontal">
+  <ngl-datatable-column heading="Action" key="action" cellClass="slds-truncate  slds-text-align--center">
+      <ng-template nglDatatableCell let-row="row"><a class="slds-p-around--small" [routerLink]="['/ccmap',JSON.stringify(row)]"  >Edit</a>|<a class="slds-p-around--small" (click)="openModal(row)" >Delete</a></ng-template>
+  </ngl-datatable-column>
+  <ngl-datatable-column heading="Object" key="object" *ngIf="!hideName" cellClass="slds-truncate slds-text-align--center"></ngl-datatable-column>
+  <ngl-datatable-column heading="Phone1" key="phone1" *ngIf="!hideName" cellClass="slds-truncate slds-text-align--center"></ngl-datatable-column>
+  <ngl-datatable-column heading="Phone2" key="phone2" *ngIf="!hideName" cellClass="slds-truncate slds-text-align--center"></ngl-datatable-column>
+  <ngl-datatable-column heading="Phone3" key="phone3" *ngIf="!hideName" cellClass="slds-truncate slds-text-align--center"></ngl-datatable-column>
+ 
+  <ng-template nglLoadingOverlay>
+    <div class="slds-box slds-box--small slds-theme--shade slds-text-align--center">Loading...</div>
+  </ng-template>
+
+  <!-- No rows overlay -->
+  <ng-template nglNoRowsOverlay>No data available in table!</ng-template>
+</table>
+<div class="slds-table--bordered">
+  <p class="slds-form-element__label slds-m-bottom--none slds-m-left--small">Total Records: <span>{{data.length}}</span></p>
+</div>
+
+
+<ngl-modal [header]="'Delete'" [(open)]="opened" [size]="size">
+  <div body>
+    <p>Are you sure you want to delete it?</p>
+</div>
+  <ng-template ngl-modal-footer *ngIf="!noFooter">
+    <button class="slds-button slds-button--neutral" (click)="cancel()">Cancel</button>
+    <button class="slds-button slds-button--brand" (click)="delete(selectedrow)" >Delete</button>
+  </ng-template>
+</ngl-modal>
+

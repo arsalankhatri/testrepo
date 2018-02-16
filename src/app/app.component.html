@@ -1,20 +1,29 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+<div class="slds-grid slds-m-top--x-large slds-m-bottom--x-large">
+  <h1 class="slds-text-heading--large slds-m-left--x-large slds-size--3-of-4">CloudCall Configuration</h1>
+  <div class="slds-button-group  slds-float--right slds-size--1-of-4" role="group">
+    <button nglbutton="neutral" type="button" class="slds-button slds-button--neutral ">Refresh Tokens</button>
+    <button nglbutton="neutral" type="button" class="slds-button slds-button--neutral">Sync CRM Profile</button>
+
+  </div>
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<ngl-tabs [(selected)]="selectedTab" [type]="type">
+
+  <ng-template ngl-tab heading="User Configuration">
+   <app-userconfiguration></app-userconfiguration>
+  </ng-template>
+  <ng-template ngl-tab heading="CloudCall Contact Phone Mapping">
+    <app-ccmappingmain></app-ccmappingmain>
+  </ng-template>
+  <ng-template ngl-tab heading="Restricted Call Recording Pages">
+    <app-ccrestrictcall></app-ccrestrictcall>
+  </ng-template>
+  <ng-template ngl-tab heading="Related to Pre-Population">
+    Related to Pre-Population
+  </ng-template>
+  <ng-template ngl-tab heading="Add New Record Configuration">
+    Add New Record Configuration
+  </ng-template>
+
+</ngl-tabs>
+
 
